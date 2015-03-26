@@ -46,40 +46,22 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">TwiDevise</a>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">            <% if user_signed_in? %>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
+              <li><%= link_to '口コミを投稿する', "#" %></li>
+              <li><%= link_to 'mouthsとは', "#" %></li>
+            <% if user_signed_in? %>
               <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
             <% else %>
             <ul class="nav navbar-nav">
-              <li><%= link_to 'ログイン', new_user_session_path %></li>
-              <li><%= link_to "Twitterで会員登録", user_omniauth_authorize_path(:twitter) %></li>
+              <li><%= link_to '新規登録', new_user_registration_path %></li>
+              <li><%= link_to 'ログイン', new_user_session_path, class: "fa fa-user" %></li>
             <% end %>
             </ul>
         </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-
-          </div><!--/.well -->
-        </div><!--/span-->
-      </div><!--/row-->
-
-      <footer>
-        <p>&copy; Company 2015</p>
-      </footer>
-
-    </div> <!-- /container -->
-
   </body>
 </html>

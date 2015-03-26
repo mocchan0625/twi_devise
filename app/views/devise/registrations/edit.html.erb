@@ -9,7 +9,7 @@
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
+      <%= f.label :password %> <i>パスワードを変更しない場合はこのまま空白にしてください</i><br />
       <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
     </div>
     <div class="form-group">
@@ -17,11 +17,13 @@
       <%= f.password_field :password_confirmation, class: "form-control"  %>
     </div>
     <div class="form-group">
-      <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</i>
+      <%= f.label :current_password %> <i>現在のパスワードを入力してください</i>
       <%= f.password_field :current_password, class: "form-control" %>
     </div>
-    <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %></div>
+    <%= f.submit t('.update', :default => "更新"), class: "btn btn-primary" %></div>
 <% end %>
 </div>
 
-<p>退会はこちら→<%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete, class: "btn btn-danger" %>.</p>
+<p><%= link_to t('.cancel_my_account', :default => "退会する"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete, class: "btn btn-danger" %>.</p>
+
+<%= render "devise/shared/links" %>

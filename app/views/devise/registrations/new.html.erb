@@ -1,7 +1,21 @@
-<%= bootstrap_devise_error_messages! %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4><%= t('.sign_up', :default => "Sign up") %></h4>
+    <h4>Twitterで新規会員登録</h4>
+  </div>
+  <div class="panel-body">
+    <h3>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Twitterで登録する", omniauth_authorize_path(resource_name, provider), class: "btn btn-primary fa fa-twitter" %><br />
+        <% end -%>
+      <% end -%>
+    </h3><i>Twitter認証後,メールアドレスとパスワードの入力が必要になります。</i>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>メールアドレスで新規会員登録</h4>
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f| %>
@@ -17,8 +31,7 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
-      <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
+      <%= f.submit "新規登録", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
-<%= render "devise/shared/links" %>
